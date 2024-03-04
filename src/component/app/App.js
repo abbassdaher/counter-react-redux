@@ -8,14 +8,15 @@ function App() {
   const golobalState = useSelector((state) => state)
   const dispatch = useDispatch()
 
-  const increase = () => {
-    const action = { type: 'increase' }
-    dispatch(action)
+  const counterOperations = (type , payload)=>{
+    dispatch({ type , payload })
   }
-  const decrease = () => {
-    const action = { type: 'decrease' }
-    dispatch(action)
-  }
+  // const increase = () => {
+  //   dispatch({ type: 'increase' })
+  // }
+  // const decrease = () => {
+  //   dispatch({ type: 'decrease' })
+  // }
   const toggleConter = () => {
     dispatch({ type: 'toggleConter' })
   }
@@ -32,8 +33,8 @@ function App() {
 
       <div className="container">
 
-        <button onClick={increase} >increase +</button>
-        <button onClick={decrease}>decrease -</button>
+        <button onClick={()=>counterOperations('increase',3)} >increase +</button>
+        <button onClick={()=>counterOperations('decrease')}>decrease -</button>
         <button onClick={toggleConter}>show content</button>
 
       </div>
