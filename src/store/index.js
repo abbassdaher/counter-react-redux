@@ -1,18 +1,18 @@
 import { createStore } from "redux"
 
 const initState = { value: 0, showCounter: true }
+// console.log('initState')
 const counterReducer = (state = initState, action) => {
-    console.log(action.type);
-    if (action.type == 'increase') {
-
-        return {...state, value:parseInt(`${parseInt(action.payload) ? (state.value += parseInt(action.payload )) : parseInt(state.value += 1)}`)  }
-    } else if (action.type == 'decrease') {
-        return { ...state, value: state.value -= 1 }
+    if (action.type === 'increase') {
+         return{...state, value: state.value + action.payload }
+    }
+    if (action.type == 'decrease') {
+        return { ...state, value: state.value - action.payload }
     }
     if (action.type == 'toggleConter') {
         return { ...state, showCounter: !state.showCounter }
     }
-    return state
+    return ( state);
 }
 const store = createStore(counterReducer)
 export default store
