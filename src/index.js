@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './component/app/App';
 import store from './store/index';
@@ -7,12 +7,10 @@ import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <Fragment><App /></Fragment>
 
-  
-    <Provider store={store}>
-      <App />
-    </Provider>
-  
+
+
 );
 
 // If you want to start measuring performance in your app, pass a function
