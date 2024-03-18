@@ -3,8 +3,8 @@ import { Fragment, useState, useCallback, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./Counter.css"
 
-import { counterAction } from "../../store/index"
-const { increase, decrease, toggleConter } = counterAction
+import { counterAction } from "../../store/counterSlice"
+// const { increase, decrease, toggleConter } = counterAction
 
 function Counter() {
     const golobalState = useSelector((state) => state)
@@ -35,19 +35,19 @@ function Counter() {
     return (
         <div className="counterApp">
             <h1>Redux</h1>
-            {golobalState.showCounter &&
+            {golobalState.counter.showCounter &&
                 <Fragment>
                     <div className="">counter:
-                        <span className="counter">{golobalState.value}</span>
+                        <span className="counter">{golobalState.counter.value}</span>
                     </div>
                 </Fragment>
             }
 
             <div className="container">
 
-                <button onClick={() => dispatch(increase(5))} >increase +</button>
-                <button onClick={() => dispatch(decrease(2))}>decrease -</button>
-                <button onClick={() => dispatch(toggleConter())}>show content</button>
+                <button onClick={() => dispatch(counterAction.increase(5))} >increase +</button>
+                <button onClick={() => dispatch(counterAction.decrease(2))}>decrease -</button>
+                <button onClick={() => dispatch(counterAction.toggleConter())}>show content</button>
 
             </div>
         </div>

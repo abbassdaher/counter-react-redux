@@ -2,8 +2,9 @@
 import "./App.css";
 import ButtonComponent from "../button/ButtonComponent";
 import Counter from "../counter/Counter";
+
+import store from "../../store/index";
 import { Provider } from "react-redux";
-import store from "../../store";
 
 function App() {
   return (
