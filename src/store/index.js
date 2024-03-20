@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import  counterSlice  from "./counterSlice";
+import authReducer from './authSlice';
 
 // const initState = { value: 0, showCounter: true }
 // // console.log('initState')
@@ -29,6 +30,7 @@ import  counterSlice  from "./counterSlice";
 const store = configureStore({
     reducer: { 
         counter: counterSlice,
+        auth: authReducer,
     },
 })
 

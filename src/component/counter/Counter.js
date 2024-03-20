@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./Counter.css"
 
 import { counterAction } from "../../store/counterSlice"
+import { authActions } from '../../store/authSlice';
 // const { increase, decrease, toggleConter } = counterAction
 
 function Counter() {
@@ -35,21 +36,30 @@ function Counter() {
     return (
         <div className="counterApp">
             <h1>Redux</h1>
-            {golobalState.counter.showCounter &&
+            {golobalState.auth.logedIn &&
                 <Fragment>
-                    <div className="">counter:
-                        <span className="counter">{golobalState.counter.value}</span>
+                    {golobalState.counter.showCounter &&
+                        <Fragment>
+                            <div className="">counter:
+                                <span className="counter">{golobalState.counter.value}</span>
+                            </div>
+                        </Fragment>
+                    }
+
+
+                    <div className="CounterContainer">
+
+                        <button onClick={() => dispatch(counterAction.increase(5))} >increase +</button>
+                        <button onClick={() => dispatch(counterAction.decrease(2))}>decrease -</button>
+                        <button onClick={() => dispatch(counterAction.toggleConter())}>show content</button>
+
                     </div>
                 </Fragment>
             }
 
-            <div className="container">
-
-                <button onClick={() => dispatch(counterAction.increase(5))} >increase +</button>
-                <button onClick={() => dispatch(counterAction.decrease(2))}>decrease -</button>
-                <button onClick={() => dispatch(counterAction.toggleConter())}>show content</button>
-
-            </div>
+            <button className='logedIn' onClick={() => dispatch(authActions.setLogedIn())}>
+                {golobalState.auth.logedIn ? 'logOut' : 'logIn'}
+            </button>
         </div>
 
 
